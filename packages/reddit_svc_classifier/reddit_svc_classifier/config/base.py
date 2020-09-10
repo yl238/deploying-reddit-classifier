@@ -23,19 +23,6 @@ class ModelConfig(object):
     features = ['title', 'body']
     text_field = 'text'
     target = 'label'
-    valid_labels =  [
-        'live convo', 
-        'bad test', 
-        'mobile', 
-        'other', 
-        'screeners',
-        'recorder', 
-        'ratings', 
-        'bug', 
-        'payment', 
-        'no test',
-        'other company'
-        ]
     # stopwords
     stopword_exceptions = ["whatever", "whenever", "about", "nothing", 
                        "empty", "none", "more", "somewhere", 
