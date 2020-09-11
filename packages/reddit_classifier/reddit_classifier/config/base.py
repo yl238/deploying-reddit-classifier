@@ -14,15 +14,19 @@ class AppConfig(object):
     package_name = 'reddit_classifier'
     pipeline_name = 'svc'
     pipeline_save_file = f"{pipeline_name}_output_v"
-    training_data_file = "tokenized_text.csv"
+    training_data_file = "reddit_labelled.csv"
     
 
 class ModelConfig(object):
     """Model level config.
     """
+    input_columns = ['title','score','num_comments','created_at','url','body']
     features = ['title', 'body']
     text_field = 'text'
     target = 'label'
+    valid_targets = ['live convo', 'bad test', 'mobile', 'other', 'screeners',
+       'recorder', 'ratings', 'bug', 'payment', 'no test','other company']
+
     # stopwords
     stopword_exceptions = ["whatever", "whenever", "about", "nothing", 
                        "empty", "none", "more", "somewhere", 
