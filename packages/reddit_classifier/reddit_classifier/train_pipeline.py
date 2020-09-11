@@ -1,13 +1,13 @@
 from sklearn.model_selection import train_test_split
 
-from reddit_svc_classifier.processing import preprocessor as pp
-from reddit_svc_classifier.processing.data_management import (
+from reddit_classifier.processing import preprocessor as pp
+from reddit_classifier.processing.data_management import (
     load_dataset,
     save_pipeline,
 )
-from reddit_svc_classifier.processing.model_evaluation import eval_metrics
-from reddit_svc_classifier.pipeline import svc_pipeline
-from reddit_svc_classifier.config.base import config
+from reddit_classifier.processing.model_evaluation import eval_metrics
+from reddit_classifier.pipeline import svc_pipeline
+from reddit_classifier.config.base import config
 from sklearn.svm import LinearSVC
 
 def run_training():

@@ -14,7 +14,7 @@ def read(filename):
 
 
 setup(
-    name="reddit_svc_classifier",
+    name="reddit_classifier",
     version="0.1.0",
     url="https://github.com/yusueliu/deploying-reddit-classifier",
     license='MIT',

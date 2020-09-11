@@ -2,9 +2,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.svm import LinearSVC
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from reddit_svc_classifier.config.base import config
-from reddit_svc_classifier.processing import preprocessor as pp
-from reddit_svc_classifier.processing.features import Vectorizer
+from reddit_classifier.config.base import config
+from reddit_classifier.processing import preprocessor as pp
 
 svc_pipeline = Pipeline(
     [

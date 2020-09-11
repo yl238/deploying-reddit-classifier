@@ -3,8 +3,8 @@ import pandas as pd
 import pytest
 
 
-from reddit_svc_classifier.config.base import config
-from reddit_svc_classifier.processing.data_management import load_dataset
+from reddit_classifier.config.base import config
+from reddit_classifier.processing.data_management import load_dataset
 
 
 @pytest.fixture(scope='session')

@@ -2,13 +2,13 @@
 import pytest
 import pandas as pd 
 from io import StringIO
-from reddit_svc_classifier.processing.preprocessor import (
+from reddit_classifier.processing.preprocessor import (
     InputTextCreator,
     MajorityClassDownsampler,
     TextCleaner,
     TextTokenizer,
 )
-from reddit_svc_classifier.config.base import config
+from reddit_classifier.config.base import config
 
 
 def test_downsampling_produces_correct_size(raw_training_data):

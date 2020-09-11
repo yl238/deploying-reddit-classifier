@@ -1,8 +1,8 @@
 import pathlib
 
-import reddit_svc_classifier
+import reddit_classifier
 
-PACKAGE_ROOT = pathlib.Path(reddit_svc_classifier.__file__).resolve().parent
+PACKAGE_ROOT = pathlib.Path(reddit_classifier.__file__).resolve().parent
 TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
 DATASET_DIR = PACKAGE_ROOT / "datasets"
 
@@ -11,7 +11,7 @@ class AppConfig(object):
     """
     Application-level config.
     """
-    package_name = 'reddit_svc_classifier'
+    package_name = 'reddit_classifier'
     pipeline_name = 'svc'
     pipeline_save_file = f"{pipeline_name}_output_v"
     training_data_file = "tokenized_text.csv"
