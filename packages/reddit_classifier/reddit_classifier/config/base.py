@@ -15,6 +15,7 @@ class AppConfig(object):
     pipeline_name = 'svc'
     pipeline_save_file = f"{pipeline_name}_output_v"
     training_data_file = "reddit_labelled.csv"
+    test_data_file = 'reddit_scrape_latest.csv'
     
 
 class ModelConfig(object):
