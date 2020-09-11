@@ -1,12 +1,12 @@
 import re
 import spacy
 import unicodedata
-import inflect
 import contractions
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.utils import resample
+pd.options.mode.chained_assignment = None
 
 
 nlp = spacy.load('en_core_web_sm')
@@ -24,7 +24,8 @@ class InputTextCreator(BaseEstimator, TransformerMixin):
         return self
     
     def _concatenate(self, X):
-        X[self.output] = X[self.features].fillna('').agg(' '.join, axis=1)
+        concat = X[self.features].fillna('').agg(' '.join, axis=1)
+        X.loc[:, self.output] = concat.values
         return X
     
     def transform(self, X):
@@ -83,7 +84,7 @@ class TextCleaner(BaseEstimator, TransformerMixin):
     
     def transform(self, X):
         X = X.copy()
-        X[self.variable] = X[self.variable].apply(self._normalize)
+        X.loc[:, self.variable] = X[self.variable].apply(self._normalize)
         return X
 
 
@@ -99,11 +100,11 @@ class TextTokenizer(BaseEstimator, TransformerMixin):
     def _normalize(self, text):
         words = self._lemmatize_and_remove_stop_words(text)
         return ' '.join(words)
-    
+
     def fit(self, X, y=None):
         return self
     
     def transform(self, X):
         X = X.copy()
-        X[self.variable] = X[self.variable].apply(self._normalize)
-        return X[self.variable]
+        X = X[self.variable].apply(self._normalize)
+        return X

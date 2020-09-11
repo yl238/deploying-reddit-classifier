@@ -52,4 +52,13 @@ def test_text_clean_expand_contractions(uncleaned_dataset):
 def test_text_clean_replaces_special_chars(uncleaned_dataset):
     cleaner = TextCleaner(variable='text')
     cleaned = cleaner.transform(uncleaned_dataset)
+    assert cleaned['text'].values[0] == 'you are $3do2a'
     assert cleaned['text'].values[1] == 'abced '
+
+
+def test_tokenizer_lemmatizes(pretokenized_dataset):
+    tokenizer = TextTokenizer(variable='text')
+    tokenized = tokenizer.transform(pretokenized_dataset)
+    assert tokenized[0] == 'hurry'
+    assert tokenized[1] == 'finish'
+    assert tokenized[2] == ''
