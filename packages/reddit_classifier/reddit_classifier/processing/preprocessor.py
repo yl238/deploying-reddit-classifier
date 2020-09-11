@@ -1,5 +1,4 @@
 import re
-import spacy
 import unicodedata
 import contractions
 import numpy as np
@@ -8,8 +7,6 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.utils import resample
 pd.options.mode.chained_assignment = None
 
-
-nlp = spacy.load('en_core_web_sm')
 
 class InputTextCreator(BaseEstimator, TransformerMixin):
     def __init__(self, features=None, text_field=None):
@@ -85,26 +82,4 @@ class TextCleaner(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X = X.copy()
         X.loc[:, self.variable] = X[self.variable].apply(self._normalize)
-        return X
-
-
-class TextTokenizer(BaseEstimator, TransformerMixin):
-    def __init__(self, variable=None, stopword_exceptions=None):
-        self.variable = variable
-        if stopword_exceptions:
-            nlp.Defaults.stop_words -= set(list(stopword_exceptions))
-            
-    def _lemmatize_and_remove_stop_words(self, text):
-        return [t.lemma_ for t in nlp(text) if not t.is_stop and len(t.lemma_) > 1]
-    
-    def _normalize(self, text):
-        words = self._lemmatize_and_remove_stop_words(text)
-        return ' '.join(words)
-
-    def fit(self, X, y=None):
-        return self
-    
-    def transform(self, X):
-        X = X.copy()
-        X = X[self.variable].apply(self._normalize)
         return X

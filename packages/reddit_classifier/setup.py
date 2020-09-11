@@ -1,10 +1,23 @@
 import io
 import os
 import re
+from pathlib import Path
 
 from setuptools import find_packages
 from setuptools import setup
 
+# Package metadata
+NAME = 'reddit_classifier'
+DESCRIPTION = "A linear SVC model to classify Reddit posts"
+URL = "https://github.com/yusueliu/deploying-reddit-classifier"
+EMAIL = "sue.nederhof@gmail.com"
+AUTHOR = "Sue Nederhof"
+REQUIRES_PYTHON = '>=3.6.0'
+
+# Packages that are required for this module to be executed
+def list_reqs(fname='requirements.txt'):
+    with open(fname) as f:
+        return f.read().splitlines()
 
 def read(filename):
     filename = os.path.join(os.path.dirname(__file__), filename)
@@ -13,22 +26,28 @@ def read(filename):
         return re.sub(text_type(r':[a-z]+:`~?(.*?)`'), text_type(r'``\1``'), fd.read())
 
 
+# Load the package's __version__.py module as a dictionary
+ROOT_DIR = Path(__file__).resolve().parent
+PACKAGE_DIR = ROOT_DIR / 'reddit_classifier'
+about = {}
+with open(PACKAGE_DIR / 'VERSION') as f:
+    _version = f.read().strip()
+    about['__version__'] = _version
+
 setup(
-    name="reddit_classifier",
-    version="0.1.0",
-    url="https://github.com/yusueliu/deploying-reddit-classifier",
+    name=NAME,
+    version=about['__version__'],
+    url=URL,
     license='MIT',
-
-    author="Sue Nederhof",
-    author_email="sue.nederhof@gmail.com",
-
-    description="A linear SVC model to classify Reddit posts",
+    author=AUTHOR,
+    author_email=EMAIL,
+    description=DESCRIPTION,
     long_description=read("README.rst"),
-
     packages=find_packages(exclude=('tests',)),
-
-    install_requires=[],
-
+    package_data={NAME: ['VERSION']},
+    install_requires=list_reqs(),
+    extra_require = {},
+    include_package_data=True,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'License :: OSI Approved :: MIT License',

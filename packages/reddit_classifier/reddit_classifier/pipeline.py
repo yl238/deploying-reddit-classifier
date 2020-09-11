@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 from reddit_classifier.config.base import config
 from reddit_classifier.processing import preprocessor as pp
+from reddit_classifier.processing import features
 
 svc_pipeline = Pipeline(
     [
@@ -16,7 +17,7 @@ svc_pipeline = Pipeline(
             ),
         ),
         ('text_tokenizer',
-            pp.TextTokenizer(variable=config.model_config.text_field,
+            features.TextTokenizer(variable=config.model_config.text_field,
                 stopword_exceptions=config.model_config.stopword_exceptions),
         ),
         ('vectorizer',
