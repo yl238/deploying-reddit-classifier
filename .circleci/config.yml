@@ -35,10 +35,22 @@ jobs:
           command: |
             . venv/bin/activate
             PYTHONPATH=./packages/reddit_classifier py.test -vv packages/reddit_classifier/tests
-
+  test_ml_api:
+    <<: *defaults
+    steps:
+      - checkout
+      - *prepare_venv
+      - run:
+          name: Running tests
+          command: |
+            . venv/bin/activate
+            pip install -r packages/ml_api/requirements.txt
+            PYTHONPATH=./packages/ml_api p.test -vv packages/ml_api/tests
+            
 
 workflows:
   version: 2
   test-all:
     jobs:
-      - test_classifier            
+      - test_classifier
+      - test_ml_api            
