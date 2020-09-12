@@ -1,7 +1,7 @@
 import json
 
-from reddit_classifier.config.base import config
-from reddit_classifier.processing.data_management import load_dataset
+from reddit.config.base import config
+from reddit.processing.data_management import load_dataset
 
 def test_prediction_endpoint_validation_200(flask_test_client):
 

@@ -1,6 +1,6 @@
-from reddit_classifier.config.base import config
-from reddit_classifier.processing.data_management import load_dataset
-from reddit_classifier import __version__ as _version
+from reddit.config.base import config
+from reddit.processing.data_management import load_dataset
+from reddit import __version__ as _version
 
 import json
 
