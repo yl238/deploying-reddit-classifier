@@ -4,9 +4,10 @@ include *.cfg
 include *.pkl
 recursive-include ./reddit_classifier/*
 
-include reddit_classifier/datasets/reddit_labelled.csv
 include reddit_classifier/trained_models/*.pkl
 include reddit_classifier/VERSION
+include reddit_classifier/datasets/train.csv
+include reddit_classifier/datasets/test.csv
 
 include ./requirements.txt
 exclude *.log

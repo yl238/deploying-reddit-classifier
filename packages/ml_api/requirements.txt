@@ -1,7 +1,7 @@
-flask==1.1.2
+flask>=1.1.2,<1.2.0
 
 # schema validation
-marshmallow==3.7.1
+marshmallow>=3.7.1,<3.8.0
 
-#local classifier package
--e /Users/sliu/Tutorials/deploying-reddit-classifier/packages/reddit_classifier
+#reddit classifier from original repo
+git+ssh://git@github.com/yusueliu/reddit.git@master
