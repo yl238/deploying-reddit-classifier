@@ -1,2 +1,3 @@
-# deploying-reddit-classifier
-Deployment and Testing of the Reddit Topic Classifier
+# Reddit Topic Classifier
+
+The Reddit topic classifier trains 
