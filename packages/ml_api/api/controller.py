@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from reddit_classifier.predict import make_prediction
-from reddit_classifier import __version__ as _version
+from reddit.predict import make_prediction
+from reddit import __version__ as _version
 
 
 from api.config import get_logger
