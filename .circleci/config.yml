@@ -45,7 +45,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install -r packages/ml_api/requirements.txt
-            PYTHONPATH=./packages/ml_api p.test -vv packages/ml_api/tests
+            PYTHONPATH=./packages/ml_api py.test -vv packages/ml_api/tests
             
 
 workflows:
