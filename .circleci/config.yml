@@ -28,13 +28,13 @@ jobs:
           name: Train model
           command: |
             . venv/bin/activate
-            
+
             PYTHONPATH=./packages/reddit_classifier python3 packages/reddit_classifier/reddit_classifier/train_pipeline.py
       - run:
           name: Run tests
           command: |
             . venv/bin/activate
-            py.test -vv packages/reddit_classifier/tests
+            PYTHONPATH=./packages/reddit_classifier py.test -vv packages/reddit_classifier/tests
 
 
 workflows:
