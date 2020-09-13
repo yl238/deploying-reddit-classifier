@@ -46,8 +46,20 @@ jobs:
             . venv/bin/activate
             pip install -r packages/ml_api/requirements.txt
             PYTHONPATH=./packages/ml_api py.test -vv packages/ml_api/tests
+  publish_docker_image_to_aws:
+    <<: *defaults
+    working_directory: ~/project/packages/ml_models
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Publishing docker image to aws ECR
+          command: |
+            sudo pip install awscli
+            eval $(aws ecr get-login --no-include-email --region us-west-2 --profile sandbox)
+            make build-ml-api-aws tag-ml-api push-ml-api-aws
+            aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition reddit-api-task --force-new-deployment --profile sandbox
             
-
 workflows:
   version: 2
   test-all:
