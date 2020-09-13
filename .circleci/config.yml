@@ -52,5 +52,4 @@ workflows:
   version: 2
   test-all:
     jobs:
-      - test_classifier
       - test_ml_api            
