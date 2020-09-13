@@ -1,0 +1,9 @@
+jupyter_notebooks*
+*/env*
+*/venv*
+.circleci*
+packages/reddit_classifier
+*.env
+*.log
+*.git
+*.gitignore
